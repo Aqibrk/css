@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Learning Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Typing animation for header text */
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* Blinking caret animation */
+        @keyframes blink-caret {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* Apply typing animation */
+        .typing-animation {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 4px solid black; /* Cursor effect */
+            width: 0;
+            animation: typing 3s steps(30) 1s forwards, blink-caret 0.75s step-end infinite, remove-caret 3s 1s forwards;
+        }
+
+        /* After typing animation is complete, remove the caret */
+        @keyframes remove-caret {
+            100% {
+                border-right: transparent;
+            }
+        }
+
+        /* Animation for changing background colors of the header */
+        @keyframes changeBgColor {
+            0% {
+                background: linear-gradient(to right, #9c27b0, #2196f3); /* Purple to Blue */
+            }
+            25% {
+                background: linear-gradient(to right, #ff5722, #ffc107); /* Orange to Yellow */
+            }
+            50% {
+                background: linear-gradient(to right, #4caf50, #8bc34a); /* Green to Light Green */
+            }
+            75% {
+                background: linear-gradient(to right, #00bcd4, #673ab7); /* Cyan to Purple */
+            }
+            100% {
+                background: linear-gradient(to right, #9c27b0, #2196f3); /* Back to Purple to Blue */
+            }
+        }
+
+        /* Applying animation to the header */
+        header {
+            animation: changeBgColor 16s ease-in-out infinite; /* 16 seconds for complete cycle */
+        }
+
+        /* Animation for button background colors */
+        @keyframes buttonColorChange {
+            0% {
+                background-color: #38b2ac; /* Teal */
+            }
+            25% {
+                background-color: #e53e3e; /* Red */
+            }
+            50% {
+                background-color: #ed8936; /* Orange */
+            }
+            75% {
+                background-color: #9b2c2c; /* Dark Red */
+            }
+            100% {
+                background-color: #38b2ac; /* Back to Teal */
+            }
+        }
+
+        /* Apply button color change animation */
+        .button-animation {
+            animation: buttonColorChange 16s ease-in-out infinite;
+        }
+
+        /* Fix issue with content visibility on smaller screens */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Style for the header */
+        header {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            text-align: center;
+            color: white;
+        }
+
+        /* Ensure buttons are styled properly */
+        .button-animation {
+            animation: buttonColorChange 16s ease-in-out infinite;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 50px;
+            text-align: center;
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .button-animation:hover {
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header Section with Animated Background Color -->
+    <header>
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-wide">
+            <span class="typing-animation" style="line-height: normal;">CSS Learning Guide</span>
+        </h1>
+        <p class="mt-4 text-lg sm:text-xl font-light">Master CSS concepts with practical examples</p>
+
+        <!-- First Button with Animation -->
+        <a href="https://aqibrk.github.io/AqibKhan-Portfolio/"
+           class="button-animation bg-teal-500 hover:bg-teal-600 transition-all duration-300 mt-5">
+            Created by Sir Aqib Khan
+        </a>
+
+        <!-- Second Button with Animation -->
+        <a href="https://aqibkhan.freewebhostmost.com/code.php"
+           class="button-animation bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 mt-5">
+            Life Editor
+        </a>
+    </header>
+
+    
+    <!-- Navbar Section with Minimalist Style -->
+    <nav class="bg-white text-gray-800 shadow-md py-4 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto flex justify-center space-x-6 sm:space-x-8">
+            <a href="basic.php" class="text-lg font-semibold px-5 py-2 rounded-md hover:bg-gray-200 transition duration-300 ease-in-out">Basic</a>
+            <a href="" class="text-lg font-semibold px-5 py-2 rounded-md hover:bg-gray-200 transition duration-300 ease-in-out">Intermediate</a>
+            <a href="" class="text-lg font-semibold px-5 py-2 rounded-md hover:bg-gray-200 transition duration-300 ease-in-out">Advanced</a>
+        </div>
+    </nav>
+
+
+    <main class="container mx-auto py-8 px-4 space-y-12">
+           <!-- Section 1 -->
+           <section>
+            <h2 class="text-2xl font-semibold text-blue-600">1. CSS Introduction</h2>
+            <p class="mt-2">An overview of CSS and its purpose in styling web pages.</p>
+            <div class="bg-gray-100 p-4 rounded-md mt-4 relative">
+                <pre class="text-sm font-mono" id="code-1">body {
+background-color: lightblue;
+}</pre>
+                <button id="copy-button-1" 
+                        class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+                        onclick="copyCode('code-1')">Copy Code</button>
+            </div>
+            <img src="images/1.png" alt="CSS Introduction" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+        </section>
+
+        <!-- Section 2 -->
+        <section>
+            <h2 class="text-2xl font-semibold text-blue-600">2. CSS Syntax</h2>
+            <p class="mt-2">The structure of CSS, consisting of selectors and declarations.</p>
+            <div class="bg-gray-100 p-4 rounded-md mt-4 relative">
+                <pre class="text-sm font-mono" id="code-2">h1 {
+color: blue;
+}</pre>
+                <button id="copy-button-2" 
+                        class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+                        onclick="copyCode('code-2')">Copy Code</button>
+            </div>
+            <img src="images/2.png" alt="CSS Syntax" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+        </section>
+
+        <!-- Section 3 -->
+        <section>
+            <h2 class="text-2xl font-semibold text-blue-600">3. CSS Selectors</h2>
+            <p class="mt-2">Patterns used to select elements for styling.</p>
+            <div class="bg-gray-100 p-4 rounded-md mt-4 relative">
+                <pre class="text-sm font-mono" id="code-3">p {
+color: green;
+}</pre>
+                <button id="copy-button-3" 
+                        class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+                        onclick="copyCode('code-3')">Copy Code</button>
+            </div>
+            <img src="images/3.png" alt="CSS Selectors" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+        </section>
+
+        <!-- Section 4 -->
+        <section>
+            <h2 class="text-2xl font-semibold text-blue-600">4. CSS Colors</h2>
+            <p class="mt-2">Define colors using names, HEX, RGB, HSL, etc.</p>
+            <div class="bg-gray-100 p-4 rounded-md mt-4 relative">
+                <pre class="text-sm font-mono" id="code-4">h1 {
+color: rgb(255, 0, 0);
+}</pre>
+                <button id="copy-button-4" 
+                        class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+                        onclick="copyCode('code-4')">Copy Code</button>
+            </div>
+            <img src="images/4.png" alt="CSS Colors" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+        </section>
+
+        <!-- Section 5 -->
+        <section>
+            <h2 class="text-2xl font-semibold text-blue-600">5. CSS Backgrounds</h2>
+            <p class="mt-2">Set the background color, image, or gradient of elements.</p>
+            <div class="bg-gray-100 p-4 rounded-md mt-4 relative">
+                <pre class="text-sm font-mono" id="code-5">body {
+background-image: url('background.jpg');
+}</pre>
+                <button id="copy-button-5" 
+                        class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+                        onclick="copyCode('code-5')">Copy Code</button>
+            </div>
+            <img src="images/49.png" alt="CSS Backgrounds" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+        </section>
+
+        <!-- Section 6 -->
+        <section>
+            <h2 class="text-2xl font-semibold text-blue-600">6. CSS Borders</h2>
+            <p class="mt-2">Add borders around elements.</p>
+            <div class="bg-gray-100 p-4 rounded-md mt-4 relative">
+                <pre class="text-sm font-mono" id="code-6">div {
+ border: 2px solid black;
+}</pre>
+                <button id="copy-button-6" 
+                        class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+                        onclick="copyCode('code-6')">Copy Code</button>
+            </div>
+            <img src="images/6.png" alt="CSS Borders" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+        </section>
+
+        <!-- Section 7 -->
+        <section>
+            <h2 class="text-2xl font-semibold text-blue-600">7. CSS Margins</h2>
+            <p class="mt-2">Define space around elements.</p>
+            <div class="bg-gray-100 p-4 rounded-md mt-4 relative">
+                <pre class="text-sm font-mono" id="code-7">div {
+margin: 20px;
+}</pre>
+                <button id="copy-button-7" 
+                        class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+                        onclick="copyCode('code-7')">Copy Code</button>
+            </div>
+            <img src="images/7.png" alt="CSS Margins" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+        </section>
+
+        <!-- Section 8 -->
+        <section>
+            <h2 class="text-2xl font-semibold text-blue-600">8. CSS Padding</h2>
+            <p class="mt-2">Define space inside elements between content and borders.</p>
+            <div class="bg-gray-100 p-4 rounded-md mt-4 relative">
+                <pre class="text-sm font-mono" id="code-8">div {
+padding: 15px;
+}</pre>
+                <button id="copy-button-8" 
+                        class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+                        onclick="copyCode('code-8')">Copy Code</button>
+            </div>
+            <img src="images/8.png" alt="CSS Padding" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+        </section>
+
+        <!-- Section 9 -->
+        <section>
+            <h2 class="text-2xl font-semibold text-blue-600">9. CSS Box Model</h2>
+            <p class="mt-2">Model describing the layout of elements, including margins, borders, padding, and content.</p>
+            <div class="bg-gray-100 p-4 rounded-md mt-4 relative">
+                <pre class="text-sm font-mono" id="code-9">div {
+margin: 10px;
+padding: 20px;
+border: 5px solid black;
+}</pre>
+                <button id="copy-button-9" 
+                        class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+                        onclick="copyCode('code-9')">Copy Code</button>
+            </div>
+            <img src="images/9.png" alt="CSS Box Model" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+        </section>
+
+<!-- Section 10 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">10. CSS Text</h2>
+    <p class="mt-2">Style text with properties like color, alignment, and decoration.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-10">p {
+text-align: center;
+color: darkblue;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-10')">Copy Code</button>
+    <img src="images/10.png" alt="CSS Text Styling" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 11 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">11. CSS Fonts</h2>
+    <p class="mt-2">Specify font families, sizes, and weights.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-11">h1 {
+font-family: Arial, sans-serif;
+font-size: 36px;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-11')">Copy Code</button>
+    <img src="images/11.png" alt="CSS Fonts" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 12 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">12. CSS Links</h2>
+    <p class="mt-2">Style hyperlinks in their various states.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-12">a {
+color: blue;
+text-decoration: none;
+    }
+a:hover {
+    color: red;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-12')">Copy Code</button>
+    <img src="images/12.png" alt="CSS Links Styling" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 13 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">13. CSS Lists</h2>
+    <p class="mt-2">Style ordered and unordered lists.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-13">ul {
+list-style-type: square;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-13')">Copy Code</button>
+    <img src="images/13.png" alt="CSS Lists" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+
+<!-- Section 14 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">14. CSS Tables</h2>
+    <p class="mt-2">Style HTML tables, including borders and spacing.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-14">table {
+border-collapse: collapse;
+ }
+td {
+border: 1px solid black;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-14')">Copy Code</button>
+    <img src="images/14.png" alt="CSS Tables" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 15 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">15. CSS Positioning</h2>
+    <p class="mt-2">Position elements using properties like static, relative, absolute, and fixed.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-15">div {
+position: relative;
+top: 10px;
+left: 20px;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-15')">Copy Code</button>
+    <img src="images/15.png" alt="CSS Positioning" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 16 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">16. CSS Display</h2>
+    <p class="mt-2">Control the display type of elements (block, inline, none, etc.).</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-16">p {
+ display: block;
+ }</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-16')">Copy Code</button>
+    <img src="images/16.png" alt="CSS Display" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 17 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">17. CSS Visibility</h2>
+    <p class="mt-2">Control the visibility of elements.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-17">div {
+ visibility: hidden;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-17')">Copy Code</button>
+    <img src="images/17.png" alt="CSS Visibility" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 18 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">18. CSS Flexbox</h2>
+    <p class="mt-2">A layout module for aligning and distributing elements in a container.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-18">.container {
+display: flex;
+justify-content: space-between;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-18')">Copy Code</button>
+    <img src="images/18.png" alt="CSS Flexbox" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 19 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">19. CSS Ordered List</h2>
+    <p class="mt-2">Customize the appearance of ordered lists.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-19">ol {
+list-style-type: upper-roman;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-19')">Copy Code</button>
+    <img src="images/19.png" alt="CSS Ordered List" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 20 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">20. CSS Float</h2>
+    <p class="mt-2">Float elements to the left or right.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-20">img {
+float: left;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-20')">Copy Code</button>
+    <img src="images/20.png" alt="CSS Float Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+  
+               <!-- Section 21 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">21. CSS Overflow</h2>
+    <p class="mt-2">Handle content that exceeds an element's box.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-21">div {
+overflow: hidden;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-21')">Copy Code</button>
+    <img src="images/21.png" alt="CSS Overflow Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 22 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">22. CSS Z-Index</h2>
+    <p class="mt-2">Set the stack order of elements.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-22">div {
+z-index: 10;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-22')">Copy Code</button>
+    <img src="images/22.png" alt="CSS Z-Index Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 23 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">23. CSS Units</h2>
+    <p class="mt-2">Specify sizes using units like px, em, rem, %, vw, and vh.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-23">div {
+width: 50%;
+height: 200px;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-23')">Copy Code</button>
+    <img src="images/23.png" alt="CSS Units Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 24 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">24. CSS Media Queries</h2>
+    <p class="mt-2">Create responsive designs that adapt to different screen sizes.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-24">@media screen and (max-width: 600px) {
+body {
+ background-color: lightgreen;
+}
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-24')">Copy Code</button>
+    <img src="images/24.png" alt="CSS Media Queries Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 25 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">25. CSS Animations</h2>
+    <p class="mt-2">Create animations using @keyframes and animation properties.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-25">@keyframes slide {
+from { left: 0; }
+to { left: 100px; }
+}
+div {
+position: absolute;
+animation: slide 2s;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-25')">Copy Code</button>
+    <img src="images/25.png" alt="CSS Animations Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 26 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">26. CSS Transitions</h2>
+    <p class="mt-2">Add smooth transitions between states of an element.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-26">button {
+background-color: blue;
+transition: background-color 0.3s ease;
+}
+button:hover {
+background-color: green;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-26')">Copy Code</button>
+    <img src="images/26.png" alt="CSS Transitions Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 27 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">27. CSS Transform</h2>
+    <p class="mt-2">Apply transformations like rotate, scale, and translate to elements.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-27">div {
+transform: rotate(45deg);
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-27')">Copy Code</button>
+    <img src="images/27.png" alt="CSS Transform Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 28 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">28. CSS Variables</h2>
+    <p class="mt-2">Define reusable values for CSS properties.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-28">:root {
+--main-color: #3498db;
+}
+div {
+color: var(--main-color);
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-28')">Copy Code</button>
+    <img src="images/28.png" alt="CSS Variables Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 29 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">29. CSS Pseudo-classes</h2>
+    <p class="mt-2">Style elements based on their state or position.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-29">a:hover {
+color: red;
+}</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-29')">Copy Code</button>
+    <img src="images/29.png" alt="CSS Pseudo-classes Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 30 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">30. CSS Pseudo-elements</h2>
+    <p class="mt-2">Style specific parts of an element, like ::before and ::after.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-30">p::before {
+content: "Note: ";
+font-weight: bold;
+        }</pre>
+    </div>
+    <button class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+            onclick="copyCode('code-30')">Copy Code</button>
+    <img src="images/30.png" alt="CSS Pseudo-elements Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+       <!-- Section 31 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">31. CSS Opacity</h2>
+    <p class="mt-2">Control the transparency of elements.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-2">div {
+opacity: 0.5;
+}</pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-2')">Copy Code</button>
+    </div>
+    <img src="images/31.png" alt="CSS Opacity Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 32 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">32. CSS Shadows</h2>
+    <p class="mt-2">Add box-shadow or text-shadow to elements.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-3">div {
+box-shadow:
+5px 5px 10px rgba(0, 0, 0, 0.5);
+}</pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-3')">Copy Code</button>
+    </div>
+    <img src="images/32.png" alt="CSS Shadows Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 33 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">33. CSS Gradients</h2>
+    <p class="mt-2">Create gradient backgrounds using linear or radial gradients.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-4">body {
+background: linear-gradient
+(to right, red, yellow);
+}</pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-4')">Copy Code</button>
+    </div>
+    <img src="images/33.png" alt="CSS Gradients Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 34 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">34. CSS Clip Path</h2>
+    <p class="mt-2">Clip elements to a specific shape.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-5">div {
+clip-path: circle(50%);
+}</pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-5')">Copy Code</button>
+    </div>
+    <img src="images/34.png" alt="CSS Clip Path Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 35 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">35. CSS Filters</h2>
+    <p class="mt-2">Apply visual effects like blur and brightness to elements.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-6">img {
+filter: blur(5px);
+}</pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-6')">Copy Code</button>
+    </div>
+    <img src="images/35.png" alt="CSS Filters Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 36 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">36. CSS Scrollbars</h2>
+    <p class="mt-2">Style scrollbars for custom designs.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-7">img {
+object-fit: cover;
+}</pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-7')">Copy Code</button>
+    </div>
+    <img src="images/36.png" alt="CSS Scrollbars Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 37 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">37. CSS Counters</h2>
+    <p class="mt-2">Create custom counters for lists or other elements.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-8">ol {
+counter-reset: item;
+}
+li {
+counter-increment: item;
+}
+li::before {
+content: counter(item) ". ";
+}</pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-8')">Copy Code</button>
+    </div>
+    <img src="images/37.png" alt="CSS Counters Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 38 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">38. CSS Writing Modes</h2>
+    <p class="mt-2">Control text direction and orientation.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-9">div {
+writing-mode: vertical-rl;
+}</pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-9')">Copy Code</button>
+    </div>
+    <img src="images/38.png" alt="CSS Writing Modes Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 39 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">39. CSS Responsive Design</h2>
+    <p class="mt-2">Techniques for making web pages adaptable to different devices.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-10">@media screen and (max-width: 600px) {
+    body {
+font-size: 14px;
+    }
+}</pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-10')">Copy Code</button>
+    </div>
+    <img src="images/39.png" alt="CSS Responsive Design Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 40 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">40. CSS Frameworks</h2>
+    <p class="mt-2">Predefined CSS libraries like Bootstrap or Tailwind CSS.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-11">
+@import url
+('https://cdnjs.cloudflare.com
+
+ajax/libs/bootstrap/
+4.5.0/css/bootstrap.min.css');
+                    
+                </pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-11')">Copy Code</button>
+    </div>
+    <img src="images/40.png" alt="CSS Frameworks Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 41 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">41. CSS Best Practices</h2>
+    <p class="mt-2">Guidelines for writing clean and maintainable CSS.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-12">/* Use meaningful class names */
+.button {
+background-color: blue;
+}</pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-12')">Copy Code</button>
+    </div>
+    <img src="images/41.png" alt="CSS Best Practices Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 42 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">42. CSS Debugging</h2>
+    <p class="mt-2">Techniques for troubleshooting CSS issues.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-13">div {
+border: 1px solid red;
+}</pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-13')">Copy Code</button>
+    </div>
+    <img src="images/42.png" alt="CSS Debugging Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 43 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">43. CSS Important</h2>
+    <p class="mt-2">Override all other styling using the <code>!important</code> keyword.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-14">p {
+color: green !important;
+}</pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-14')">Copy Code</button>
+    </div>
+    <img src="images/43.png" alt="CSS Important Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+<!-- Section 44 -->
+<section>
+    <h2 class="text-2xl font-semibold text-blue-600">44. CSS Shorthands</h2>
+    <p class="mt-2">Combine multiple CSS properties into a single declaration.</p>
+    <div class="bg-gray-100 p-4 rounded-md mt-4">
+        <pre class="text-sm font-mono" id="code-15">div {
+margin: 10px 20px 30px 40px;
+}</pre>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md" onclick="copyCode('code-15')">Copy Code</button>
+    </div>
+    <img src="images/44.png" alt="CSS Shorthands Example" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+</section>
+
+        <!-- Section 45 -->
+        <section>
+            <h2 class="text-2xl font-semibold text-blue-600">45. CSS border</h2>
+            <p class="mt-2">Add borders around elements</p>
+            <div class="bg-gray-100 p-4 rounded-md mt-4 relative">
+                <pre class="text-sm font-mono" id="code-5">div {
+border: 2px solid black;
+background-color: lightgray;
+                }</pre>
+                
+                <button id="copy-button-5" 
+                        class="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none"
+                        onclick="copyCode('code-5')">Copy Code</button>
+            </div>
+            <img src="images/5.png" alt="CSS Backgrounds" class="mt-4 w-full max-w-md mx-auto rounded-md shadow">
+        </section>
+</main>
+
+        <!-- Continue adding sections up to 20, with the same structure -->
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Aqib Khan. All rights reserved.</p>
+            <a href="https://aqibkhan.freewebhostmost.com/code.php" class="inline-block bg-white text-blue-600 font-semibold py-2 px-4 mt-2 rounded hover:bg-blue-700 hover:text-white transition">
+                Life Editor
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        function copyCode(codeId) {
+            const codeBlock = document.getElementById(codeId);
+            const range = document.createRange();
+            range.selectNode(codeBlock);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            alert('Code copied to clipboard!');
+        }
+    </script>
+
+</body>
+</html>
